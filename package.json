@@ -13,8 +13,7 @@
     "coverage": "istanbul cover -x '**/__test/**' ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace lib/__test/index.js",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info && npm run send:coverage",
     "send:coverage": "scripts/fixMap.sh && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "build:book": "gitbook build && rm -rf docs && mv _book docs",
-    "postinstall": "postinstall-build dist \"npm run build:commonjs\""
+    "build:book": "gitbook build && rm -rf docs && mv _book docs"
   },
   "repository": {
     "type": "git",
@@ -36,8 +35,7 @@
   "dependencies": {
     "rimraf": "^2.5.4",
     "underscore": "^1.8.3",
-    "vorpal": "^1.11.4",
-    "postinstall-build": "^2.1.3"
+    "vorpal": "^1.11.4"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
