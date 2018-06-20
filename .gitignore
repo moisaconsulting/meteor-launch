@@ -1,7 +1,7 @@
 node_modules
 launch.json
 npm-debug.log
-lib
+# lib
 _book
 coverage
 .coveralls.yml
