@@ -15,7 +15,7 @@ const uploadPlayStore = env => (
       /* istanbul ignore next */
       console.log("Installing playup...");
       /* istanbul ignore next */
-      execSync("npm install --save git+https://github.com/moisaconsulting/meteor-launch");
+      execSync("npm install -g git+https://github.com/smartcrm/playup");
     }
 
     const getCommand = path => (
