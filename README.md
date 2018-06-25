@@ -21,3 +21,9 @@ $ launch testflight
 - [Sample project](https://github.com/NewSpring/launch-basic-example)
 - [Sample project 2](https://github.com/NewSpring/launch-todos-example)
 - [Sample project 3](https://github.com/NewSpring/launch-crosswalk-example)
+
+## Google play channel
+
+- you can upload to this google channels: `beta`, `alpha`, `production` or `rollout`;
+- how to use? just run a command ```launch playstore -a 'channels name'```;
+- example: ```launch playstore -a beta```
