@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import android from "./android";
 import util from "./util";
 
-const uploadPlayStore = env => (
+const uploadPlayStore = (env, channel) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Play Store...");
@@ -18,11 +18,18 @@ const uploadPlayStore = env => (
       execSync("npm install -g git+https://github.com/smartcrm/playup");
     }
 
+    const channels = ['alpha', 'beta', 'production', 'rollout'];
+
+    const test = channels.some((el) => el === channel);
+
+    if (!test) channel = 'alpha'
+
     const getCommand = path => (
       `
         playup \
           --auth $PLAY_AUTH_FILE \
-          ${path}
+          ${path} \
+          --track ${channel}
       `
     );
 

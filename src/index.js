@@ -85,9 +85,10 @@ Launch
 
 Launch
   .command("playstore", "Deploy to Google Play Store")
-  .action(() => {
-    android.prepareApk(superEnv)
-      .then(() => play.uploadPlayStore(superEnv))
+  .option('-a, --amount <channel>', 'upload channel.')
+  .action((opt) => {
+    android.prepareApk(superEnv, opt.options.amount)
+      .then(() => play.uploadPlayStore(superEnv, opt.options.amount))
       .catch(error => console.log(error.message));
   });
 
