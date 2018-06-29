@@ -160,9 +160,6 @@ platform :ios do
         app_identifier: "com.ticketnetworkmobile.pos2",
         username: "amoisa@me.com"
       )
-      # certificate_path: ENV['CERT_KEY_PATH'],
-      # certificate_password: ENV['CERT_PASSWORD'],
-      # keychain_name: ENV["KEYCHAIN_NAME"]
     )
 
   end
