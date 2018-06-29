@@ -150,10 +150,10 @@ platform :ios do
       username: "amoisa@me.com"
     )
 
-    unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
-      path: "fastlane_tmp_keychain",
-      password: ENV["KEYCHAIN_PASSWORD"]
-    )
+    # unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
+      # path: "fastlane_tmp_keychain",
+      # password: ENV["KEYCHAIN_PASSWORD"]
+    # )
 
     # return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
 
