@@ -16,6 +16,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
+setup_travis
 fastlane_version "1.96.0"
 
 default_platform :ios
