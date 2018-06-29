@@ -156,8 +156,9 @@ platform :ios do
 
     import_certificate(
       match(
-      git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: "com.ticketnetworkmobile.pos2"
+        git_url: "https://github.com/moisaconsulting/apple-certs",
+        app_identifier: "com.ticketnetworkmobile.pos2",
+        username: "amoisa@me.com"
       )
       # certificate_path: ENV['CERT_KEY_PATH'],
       # certificate_password: ENV['CERT_PASSWORD'],
