@@ -145,7 +145,7 @@ platform :ios do
   lane :certificates do
     match(
       git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: ["com.ticketnetworkmobile.pos2"]
+      app_identifier: "com.ticketnetworkmobile.pos2"
       )
   end
 
