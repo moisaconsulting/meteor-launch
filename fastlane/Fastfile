@@ -86,7 +86,7 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    certificates
+    import_certificates
 
     build_app_production
 
@@ -99,7 +99,7 @@ platform :ios do
   desc "Submit a new Beta Build to Hockey"
   desc "This will also make sure the profile is up to date"
   lane :hockey do
-    certificates
+    import_certificates
 
     build_app_ad_hoc
 
@@ -142,13 +142,6 @@ platform :ios do
     end
   end
 
-  lane :certificates do
-    match(
-      git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: "com.ticketnetworkmobile.pos2"
-      )
-  end
-
   def import_certificates
     return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
 
@@ -162,9 +155,13 @@ platform :ios do
     )
 
     import_certificate(
-      certificate_path: ENV['CERT_KEY_PATH'],
-      certificate_password: ENV['CERT_PASSWORD'],
-      keychain_name: ENV["KEYCHAIN_NAME"]
+      match(
+      git_url: "https://github.com/moisaconsulting/apple-certs",
+      app_identifier: "com.ticketnetworkmobile.pos2"
+      )
+      # certificate_path: ENV['CERT_KEY_PATH'],
+      # certificate_password: ENV['CERT_PASSWORD'],
+      # keychain_name: ENV["KEYCHAIN_NAME"]
     )
 
   end
