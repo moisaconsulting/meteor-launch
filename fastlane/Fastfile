@@ -146,8 +146,7 @@ platform :ios do
     match(
       git_url: "https://github.com/moisaconsulting/apple-certs",
       app_identifier: "com.ticketnetworkmobile.pos2", 
-      readonly: true,
-      type: "development"
+      readonly: true
       )
   end
 
