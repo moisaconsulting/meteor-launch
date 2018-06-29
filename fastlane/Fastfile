@@ -151,7 +151,7 @@ platform :ios do
     )
 
     unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
-      path: "login.keychain",
+      path: "fastlane_tmp_keychain",
       password: ENV["KEYCHAIN_PASSWORD"]
     )
 
