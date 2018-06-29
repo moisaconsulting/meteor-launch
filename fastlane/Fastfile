@@ -154,13 +154,17 @@ platform :ios do
      password: ENV["KEYCHAIN_PASSWORD"]
     )
 
-    import_certificate(
-      match(
-        git_url: "https://github.com/moisaconsulting/apple-certs",
-        app_identifier: "com.ticketnetworkmobile.pos2",
-        username: "amoisa@me.com"
-      )
+    match(
+      git_url: "https://github.com/moisaconsulting/apple-certs",
+      app_identifier: "com.ticketnetworkmobile.pos2",
+      username: "amoisa@me.com"
     )
+
+    # import_certificate(
+      # certificate_path: ENV['CERT_KEY_PATH'],
+      # certificate_password: ENV['CERT_PASSWORD'],
+      # keychain_name: ENV["KEYCHAIN_NAME"]
+    # )
 
   end
 end
