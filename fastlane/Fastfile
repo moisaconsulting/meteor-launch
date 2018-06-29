@@ -143,6 +143,17 @@ platform :ios do
   end
 
   def import_certificates
+    match(
+      git_url: "https://github.com/moisaconsulting/apple-certs",
+      app_identifier: "com.ticketnetworkmobile.pos2",
+      username: "amoisa@me.com"
+    )
+
+    unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
+      path: "login.keychain",
+      password: ENV["KEYCHAIN_PASSWORD"]
+    )
+
     # return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
 
     # create_keychain(
@@ -153,12 +164,6 @@ platform :ios do
      # lock_when_sleeps: true,
      # password: ENV["KEYCHAIN_PASSWORD"]
     # )
-
-    match(
-      git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: "com.ticketnetworkmobile.pos2",
-      username: "amoisa@me.com"
-    )
 
     # import_certificate(
       # certificate_path: ENV['CERT_KEY_PATH'],
