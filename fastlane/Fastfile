@@ -18,6 +18,8 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.96.0"
 
+setup_travis
+
 default_platform :ios
 
 SLACK_POST = true
@@ -86,8 +88,6 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    setup_travis
-
     import_certificates
 
     build_app_production
@@ -101,8 +101,6 @@ platform :ios do
   desc "Submit a new Beta Build to Hockey"
   desc "This will also make sure the profile is up to date"
   lane :hockey do
-    setup_travis
-    
     import_certificates
 
     build_app_ad_hoc
@@ -151,7 +149,8 @@ platform :ios do
       git_url: "https://github.com/moisaconsulting/apple-certs",
       app_identifier: "com.ticketnetworkmobile.pos2",
       username: "amoisa@me.com",
-      readonly: true
+      readonly: true,
+      type: "development"
     )
 
     # unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
