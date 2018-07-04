@@ -45,6 +45,11 @@ platform :ios do
       build_configuration: "Release"
     )
 
+    update_project_team(
+      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      teamid: "8M3X28P97Q"
+    )
+
     gym(
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
@@ -66,6 +71,11 @@ platform :ios do
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
+    )
+
+    update_project_team(
+      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      teamid: "8M3X28P97Q"
     )
 
     gym(
