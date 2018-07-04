@@ -33,7 +33,7 @@ end
 platform :ios do
 
   before_all do
-    ENV['KEYCHAIN_NAME'] = "TempKeychain.keychain"
+    ENV['KEYCHAIN_NAME'] = "fastlane_tmp_keychain" 
   end
 
   private_lane :build_app_production do
@@ -145,35 +145,37 @@ platform :ios do
   end
 
   def import_certificates
+    return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
+
+    create_keychain(
+      name: ENV["KEYCHAIN_NAME"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: ENV["KEYCHAIN_PASSWORD"]
+    )
+
+    unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
+      path: "fastlane_tmp_keychain",
+      password: ENV["KEYCHAIN_PASSWORD"]
+    )
+
     match(
       git_url: "https://github.com/moisaconsulting/apple-certs",
       app_identifier: "com.ticketnetworkmobile.pos2",
       username: "amoisa@me.com",
       readonly: true,
-      type: "development"
+      type: "development",
+      keychain_name: ENV["KEYCHAIN_NAME"],
+      keychain_password: ENV["KEYCHAIN_PASSWORD"],
     )
 
-    # unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
-      # path: "fastlane_tmp_keychain",
-      # password: ENV["KEYCHAIN_PASSWORD"]
-    # )
-
-    # return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
-
-    # create_keychain(
-     # name: ENV["KEYCHAIN_NAME"],
-     # default_keychain: true,
-     # unlock: true,
-     # timeout: 3600,
-     # lock_when_sleeps: true,
-     # password: ENV["KEYCHAIN_PASSWORD"]
-    # )
-
-    # import_certificate(
-      # certificate_path: ENV['CERT_KEY_PATH'],
-      # certificate_password: ENV['CERT_PASSWORD'],
-      # keychain_name: ENV["KEYCHAIN_NAME"]
-    # )
+    import_certificate(
+     certificate_path: ENV['CERT_KEY_PATH'],
+      certificate_password: ENV['CERT_PASSWORD'],
+      keychain_name: ENV["KEYCHAIN_NAME"]
+    )
 
   end
 end
