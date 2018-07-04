@@ -54,7 +54,8 @@ platform :ios do
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false,
-      export_method: "app-store"
+      export_method: "app-store",
+      export_team_id: "8M3X28P97Q"
     )
   end
 
@@ -83,7 +84,8 @@ platform :ios do
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false,
-      export_method: "ad-hoc"
+      export_method: "ad-hoc",
+      export_team_id: "8M3X28P97Q"
     )
   end
 
