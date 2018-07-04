@@ -48,7 +48,8 @@ platform :ios do
     gym(
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      include_bitcode: false
+      include_bitcode: false,
+      export_method: "app-store"
     )
   end
 
@@ -147,6 +148,22 @@ platform :ios do
       username: "amoisa@me.com",
       readonly: true,
       type: "development",
+    )
+
+    match(
+      git_url: "https://github.com/moisaconsulting/apple-certs",
+      app_identifier: "com.ticketnetworkmobile.pos2",
+      username: "amoisa@me.com",
+      readonly: true,
+      type: "adhoc",
+    )
+
+    match(
+      git_url: "https://github.com/moisaconsulting/apple-certs",
+      app_identifier: "com.ticketnetworkmobile.pos2",
+      username: "amoisa@me.com",
+      readonly: true,
+      type: "appstore",
     )
   end
 end
