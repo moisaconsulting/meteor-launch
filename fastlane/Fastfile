@@ -159,8 +159,7 @@ platform :ios do
       app_identifier: "com.ticketnetworkmobile.pos2",
       username: "amoisa@me.com",
       readonly: true,
-      type: "development",
-      team_id: "8M3X28P97Q"
+      type: "development"
     )
 
     match(
@@ -168,8 +167,7 @@ platform :ios do
       app_identifier: "com.ticketnetworkmobile.pos2",
       username: "amoisa@me.com",
       readonly: true,
-      type: "adhoc",
-      team_id: "8M3X28P97Q"
+      type: "adhoc"
     )
 
     match(
@@ -177,8 +175,7 @@ platform :ios do
       app_identifier: "com.ticketnetworkmobile.pos2",
       username: "amoisa@me.com",
       readonly: true,
-      type: "appstore",
-      team_id: "8M3X28P97Q"
+      type: "appstore"
     )
   end
 end
