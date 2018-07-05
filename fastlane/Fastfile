@@ -160,6 +160,7 @@ platform :ios do
       username: "amoisa@me.com",
       readonly: true,
       type: "development",
+      team_id: "8M3X28P97Q"
     )
 
     match(
@@ -168,6 +169,7 @@ platform :ios do
       username: "amoisa@me.com",
       readonly: true,
       type: "adhoc",
+      team_id: "8M3X28P97Q"
     )
 
     match(
@@ -176,6 +178,7 @@ platform :ios do
       username: "amoisa@me.com",
       readonly: true,
       type: "appstore",
+      team_id: "8M3X28P97Q"
     )
   end
 end
