@@ -15,6 +15,7 @@ before_install:
 script:
   - yarn global add coveralls
   - gem install fastlane
+  - fastlane add_plugin update_project_codesigning
   - yarn test
   - yarn coverage
 sudo: false
