@@ -45,11 +45,12 @@ platform :ios do
       build_configuration: "Release"
     )
 
-    update_project_team(
+    update_project_codesigning(
       path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      teamid: "8M3X28P97Q"
+      use_automatic_signing: true,
+      team_id: "8M3X28P97Q"
     )
-
+    
     gym(
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
@@ -74,9 +75,10 @@ platform :ios do
       build_configuration: "Release"
     )
 
-    update_project_team(
+    update_project_codesigning(
       path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      teamid: "8M3X28P97Q"
+      use_automatic_signing: true,
+      team_id: "8M3X28P97Q"
     )
 
     gym(
