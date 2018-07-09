@@ -47,7 +47,7 @@ platform :ios do
 
     update_project_codesigning(
       path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      use_automatic_signing: true,
+      use_automatic_signing: false,
       team_id: "8M3X28P97Q"
     )
     
@@ -77,7 +77,7 @@ platform :ios do
 
     update_project_codesigning(
       path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      use_automatic_signing: true,
+      use_automatic_signing: false,
       team_id: "8M3X28P97Q"
     )
 
