@@ -16,7 +16,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.96.0"
+fastlane_version "2.99.0"
 
 setup_travis
 
@@ -43,11 +43,6 @@ platform :ios do
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
-    )
-
-    disable_automatic_code_signing(
-      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      team_id: "8M3X28P97Q"
     )
     
     gym(
@@ -94,11 +89,6 @@ platform :ios do
   lane :beta do
     import_certificates
 
-    disable_automatic_code_signing(
-      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      team_id: "8M3X28P97Q"
-    )
-
     build_app_production
 
     pilot(
@@ -111,11 +101,6 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :hockey do
     import_certificates
-
-    disable_automatic_code_signing(
-      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      team_id: "8M3X28P97Q"
-    )
 
     build_app_ad_hoc
 
