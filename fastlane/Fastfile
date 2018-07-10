@@ -35,8 +35,7 @@ platform :ios do
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
-      username: ENV['APPLE_ID'],
-      team_id: "8M3X28P97Q"
+      username: ENV['APPLE_ID']
     )
 
     update_project_provisioning(
@@ -45,18 +44,12 @@ platform :ios do
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
     )
-
-    update_project_team(
-      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      teamid: "8M3X28P97Q"
-    )
     
     gym(
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false,
-      export_method: "app-store",
-      export_team_id: "8M3X28P97Q"
+      export_method: "app-store"
     )
   end
 
@@ -65,8 +58,7 @@ platform :ios do
       app_identifier: ENV['APP_IDENTIFIER'],
       username: ENV['APPLE_ID'],
       adhoc: true,
-      skip_certificate_verification: true,
-      team_id: "8M3X28P97Q"
+      skip_certificate_verification: true
     )
 
     update_project_provisioning(
@@ -76,18 +68,12 @@ platform :ios do
       build_configuration: "Release"
     )
 
-    update_project_team(
-      path: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      teamid: "8M3X28P97Q"
-    )
-
     gym(
       use_legacy_build_api: true,
       scheme: ENV['XCODE_SCHEME_NAME'],
       project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false,
       export_method: "ad-hoc",
-      export_team_id: "8M3X28P97Q"
     )
   end
 
