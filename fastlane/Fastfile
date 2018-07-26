@@ -30,6 +30,19 @@ if ENV['SLACK_URL'].nil? or ENV['SLACK_URL'].empty?
   SLACK_POST = false
 end
 
+platform :macos do
+
+  lane :deploy_desktop do
+    deliver(
+      username: ENV['APPLE_ID'],
+      force: true,
+      app_identifier: "com.ticketnetworkmobile.desktop",
+      pkg: "#{ENV['PWD']}/.desktop-installer/TN Desktop POS-0.0.1.pkg"
+    )
+  end
+
+end
+
 platform :ios do
 
   private_lane :build_app_production do

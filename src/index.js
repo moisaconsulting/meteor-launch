@@ -84,6 +84,15 @@ Launch
   });
 
 Launch
+  .command("appstoreDesktop", "Deploy to App Store Connect")
+  .action(() => {
+    util.addFastfile()
+      .then(() => iTunes.uploadAppStoreDesktop(superEnv))
+      .then(() => util.removeFastfile())
+      .catch(error => console.log(error.message));
+  }); 
+
+Launch
   .command("playstore", "Deploy to Google Play Store")
   .option('-a, --amount <channel>', 'upload channel.')
   .action((opt) => {
