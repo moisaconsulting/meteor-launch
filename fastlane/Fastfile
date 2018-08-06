@@ -18,10 +18,6 @@
 # Update this, if you use features of a newer version
 fastlane_version "2.99.0"
 
-setup_travis
-
-default_platform :ios
-
 SLACK_POST = true
 if ENV['SLACK_ROOM'].nil? or ENV['SLACK_ROOM'].empty?
   SLACK_POST = false
@@ -30,7 +26,7 @@ if ENV['SLACK_URL'].nil? or ENV['SLACK_URL'].empty?
   SLACK_POST = false
 end
 
-platform :macos do
+platform :mac do
 
   lane :deploy_desktop do
     deliver(
@@ -44,7 +40,7 @@ platform :macos do
 end
 
 platform :ios do
-
+  setup_travis
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],

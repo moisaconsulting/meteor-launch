@@ -41,7 +41,7 @@ const uploadAppStoreDesktop = env => (
   new Promise((resolve) => {
     console.log("Uploading to App store connect...");
 
-    execSync("fastlane macos deploy_desktop", {
+    execSync("fastlane mac deploy_desktop", {
       stdio: [0, 1, 2],
       env,
     });
