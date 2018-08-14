@@ -33,14 +33,14 @@ platform :mac do
       username: ENV['APPLE_ID'],
       force: true,
       app_identifier: "com.ticketnetworkmobile.desktop",
-      pkg: "#{ENV['PWD']}/.desktop-installer/TN Desktop POS-0.0.1.pkg"
+      pkg: "#{ENV['PWD']}/.desktop-installer/TN Desktop POS.pkg"
     )
   end
 
 end
 
 platform :ios do
-  setup_travis
+  # setup_travis
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
