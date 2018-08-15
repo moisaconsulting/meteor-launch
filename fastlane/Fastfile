@@ -32,8 +32,8 @@ platform :mac do
     deliver(
       username: ENV['APPLE_ID'],
       force: true,
-      app_identifier: "com.ticketnetworkmobile.desktop",
-      pkg: "#{ENV['PWD']}/.desktop-installer/TN Desktop POS.pkg"
+      app_identifier: ENV['DESKTOP_APP_IDENTIFIER'],
+      pkg: "#{ENV['DESKTOP_APP_PATH']}/#{ENV['DESKTOP_APP_NAME']}.pkg"
     )
   end
 
