@@ -152,25 +152,25 @@ platform :ios do
 
   def import_certificates
     match(
-      git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: "com.ticketnetworkmobile.pos2",
-      username: "amoisa@me.com",
+      git_url: ENV['CERTS_GIT_URL'],
+      app_identifier: ENV['APP_IDENTIFIER'],
+      username: ENV['APPLE_ID'],
       readonly: true,
       type: "development"
     )
 
     match(
-      git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: "com.ticketnetworkmobile.pos2",
-      username: "amoisa@me.com",
+      git_url: ENV['CERTS_GIT_URL'],
+      app_identifier: ENV['APP_IDENTIFIER'],
+      username: ENV['APPLE_ID'],
       readonly: true,
       type: "adhoc"
     )
 
     match(
-      git_url: "https://github.com/moisaconsulting/apple-certs",
-      app_identifier: "com.ticketnetworkmobile.pos2",
-      username: "amoisa@me.com",
+      git_url: ENV['CERTS_GIT_URL'],
+      app_identifier: ENV['APP_IDENTIFIER'],
+      username: ENV['APPLE_ID'],
       readonly: true,
       type: "appstore"
     )
