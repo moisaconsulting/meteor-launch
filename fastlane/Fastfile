@@ -40,7 +40,7 @@ platform :mac do
 end
 
 platform :ios do
-  # setup_travis
+  setup_travis
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
