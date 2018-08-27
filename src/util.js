@@ -50,8 +50,7 @@ const generateSettings = (originalEnv) => {
     GYM_OUTPUT_DIRECTORY: process.cwd(),
     FL_REPORT_PATH: join(
       process.cwd(),
-      launchVars.METEOR_OUTPUT_DIR,
-      "ios",
+      launchVars.METEOR_OUTPUT_DIR
     ),
     XCODE_PROJECT: pathResolve(
       launchVars.METEOR_OUTPUT_DIR,

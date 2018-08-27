@@ -7,8 +7,9 @@ import galaxy from "./galaxy";
 import hockey from "./hockey";
 import iTunes from "./iTunes";
 import android from "./android";
-import play from "./play";
+// import play from "./play";
 import util from "./util";
+import google from "./google";
 
 const Launch = vorpal();
 
@@ -93,11 +94,13 @@ Launch
   }); 
 
 Launch
-  .command("playstore", "Deploy to Google Play Store")
+  .command("playstore", "Deploy APK to Google Play Store")
   .option('-a, --amount <channel>', 'upload channel.')
   .action((opt) => {
     android.prepareApk(superEnv, opt.options.amount)
-      .then(() => play.uploadPlayStore(superEnv, opt.options.amount))
+      .then(() => util.addFastfile())
+      .then(() => google.uploadAPK(superEnv, opt.options.amount))
+      .then(() => util.removeFastfile())
       .catch(error => console.log(error.message));
   });
 
@@ -106,7 +109,7 @@ Launch
   .action(() => {
     util.addFastfile()
       .then(() => android.prepareApk(superEnv))
-      .then(() => play.uploadPlayStore(superEnv))
+      .then(() => google.uploadAPK(superEnv, 'production'))
       .then(() => iTunes.uploadAppStore(superEnv))
       .then(() => util.removeFastfile())
       .catch(error => console.log(error.message));

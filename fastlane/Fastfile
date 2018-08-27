@@ -26,6 +26,17 @@ if ENV['SLACK_URL'].nil? or ENV['SLACK_URL'].empty?
   SLACK_POST = false
 end
 
+platform :android do
+  lane :playstore do |options|
+    upload_to_play_store(
+      track: options[:track], 
+      apk: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/android/production.apk", 
+      json_key: "#{ENV['PLAY_AUTH_FILE']}",
+      package_name: ENV['APP_IDENTIFIER']
+    )
+  end
+end
+
 platform :mac do
 
   lane :deploy_desktop do
