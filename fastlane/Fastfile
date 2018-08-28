@@ -38,8 +38,10 @@ platform :android do
 end
 
 platform :mac do
-
   lane :deploy_desktop do
+    if lane_context[SharedValues::PLATFORM_NAME] == :mac
+      setup_travis
+    end
     deliver(
       username: ENV['APPLE_ID'],
       force: true,
@@ -47,11 +49,9 @@ platform :mac do
       pkg: "#{ENV['DESKTOP_APP_PATH']}/#{ENV['DESKTOP_APP_NAME']}.pkg"
     )
   end
-
 end
 
 platform :ios do
-  setup_travis
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
@@ -99,12 +99,18 @@ platform :ios do
 
   desc "Just build the app"
   lane :build do
+    if lane_context[SharedValues::PLATFORM_NAME] == :ios
+      setup_travis
+    end
     build_app_production
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
+    if lane_context[SharedValues::PLATFORM_NAME] == :ios
+      setup_travis
+    end
     import_certificates
 
     build_app_production
@@ -118,6 +124,9 @@ platform :ios do
   desc "Submit a new Beta Build to Hockey"
   desc "This will also make sure the profile is up to date"
   lane :hockey do
+    if lane_context[SharedValues::PLATFORM_NAME] == :ios
+      setup_travis
+    end
     import_certificates
 
     build_app_ad_hoc
@@ -132,6 +141,9 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   desc "** Full Markdown** Support: `code`"
   lane :deploy do
+    if lane_context[SharedValues::PLATFORM_NAME] == :ios
+      setup_travis
+    end
     build_app_production
 
     deliver(
