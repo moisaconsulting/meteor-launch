@@ -46,7 +46,8 @@ platform :mac do
       username: ENV['APPLE_ID'],
       force: true,
       app_identifier: ENV['DESKTOP_APP_IDENTIFIER'],
-      pkg: "#{ENV['DESKTOP_APP_PATH']}/#{ENV['DESKTOP_APP_NAME']}.pkg"
+      pkg: "#{ENV['DESKTOP_APP_PATH']}/#{ENV['DESKTOP_APP_NAME']}.pkg",
+      run_precheck_before_submit: false
     )
   end
 end
