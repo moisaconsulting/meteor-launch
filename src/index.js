@@ -91,7 +91,16 @@ Launch
       .then(() => iTunes.uploadAppStoreDesktop(superEnv))
       .then(() => util.removeFastfile())
       .catch(error => console.log(error.message));
-  }); 
+  });
+  
+Launch
+  .command("installCerts", "Install apple certificates")
+  .action(() => {
+    util.addFastfile()
+      .then(() => iTunes.installCerts(superEnv))
+      .then(() => util.removeFastfile())
+      .catch(error => console.log(error.message));
+  });
 
 Launch
   .command("playstore", "Deploy APK to Google Play Store")

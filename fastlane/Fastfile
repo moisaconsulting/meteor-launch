@@ -153,6 +153,13 @@ platform :ios do
     )
   end
 
+  lane :install_certs do
+    if lane_context[SharedValues::PLATFORM_NAME] == :ios
+      setup_travis
+    end
+    import_certificates
+  end
+
   after_all do |lane|
     if SLACK_POST
       slack(

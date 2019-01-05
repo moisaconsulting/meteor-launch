@@ -50,8 +50,27 @@ const uploadAppStoreDesktop = env => (
   })
 );
 
+const installCerts = env => (
+  new Promise((resolve) => {
+    if (!util.hasPlatform("ios")) {
+      console.log("Skipping installing certifications for non iOS platform ...");
+      return resolve("skipped");
+    }
+
+    console.log("Installing certifications ...");
+
+    execSync("fastlane ios install_certs", {
+      stdio: [0, 1, 2],
+      env,
+    });
+
+    return resolve("installed");
+  })
+);
+
 export default {
   uploadTestFlight,
   uploadAppStore,
-  uploadAppStoreDesktop
+  uploadAppStoreDesktop,
+  installCerts
 };
