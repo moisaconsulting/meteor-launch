@@ -158,6 +158,11 @@ platform :ios do
       setup_travis
     end
     import_certificates
+    update_project_provisioning(
+      xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      build_configuration: "Release",
+      code_signing_identity: "iPhone Development" # optionally specify the codesigning identity
+    )
   end
 
   after_all do |lane|
