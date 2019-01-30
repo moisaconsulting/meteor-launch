@@ -160,7 +160,7 @@ platform :ios do
     import_certificates
     update_project_provisioning(
       xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
-      profile: "/Users/travis/Library/MobileDevice/Provisioning\ Profiles/#{ENV['PROVISIONING_PROFILE_NAME']}.mobileprovision",
+      profile: "#{ENV['PROVISIONING_PROFILE_PATH']}/#{ENV['PROVISIONING_PROFILE_NAME']}.mobileprovision",
       build_configuration: "Release",
       target_filter: ENV['XCODE_SCHEME_NAME'],
       code_signing_identity: "iPhone Development" # optionally specify the codesigning identity
