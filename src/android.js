@@ -6,13 +6,25 @@ import util from "./util";
 const settings = util.generateSettings(process.env);
 const outputDir = settings.METEOR_OUTPUT_ABSOLUTE;
 
+// if the meteor version higher than 1.8.0 we we have to change the path apk and it's name 
+const meteorVersion = execSync('cat $PWD/.meteor/release').toString('utf8').split('@')[1];
+let androidApkPath,
+    androidApkName;
+if (meteorVersion > '1.8.0'){
+  androidApkPath = '/android/project/app/build/outputs/apk/release';
+  androidApkName = '/app-release-unsigned.apk';
+} else {
+  androidApkPath = '/android/project/build/outputs/apk/release',
+  androidApkName = '/android-release-unsigned.apk';
+}
+
 const buildFolder = {
   root: `${outputDir}/android`,
-  crosswalk: `${outputDir}/android/project/build/outputs/apk/release`,
+  crosswalk: outputDir + androidApkPath,
 };
 
 const unsignedApks = {
-  regular: `${buildFolder.crosswalk}/android-release-unsigned.apk`,
+  regular: buildFolder.crosswalk + androidApkName,
   crosswalkArmv7: `${buildFolder.crosswalk}/android-armv7-release-unsigned.apk`,
   crosswalkX86: `${buildFolder.crosswalk}/android-x86-release-unsigned.apk`,
 };
