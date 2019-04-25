@@ -14,7 +14,7 @@ if (meteorVersion > '1.8.0'){
   androidApkPath = '/android/project/app/build/outputs/apk/release';
   androidApkName = '/app-release-unsigned.apk';
 } else {
-  androidApkPath = '/android/project/build/outputs/apk/release',
+  androidApkPath = '/android/project/build/outputs/apk/release';
   androidApkName = '/android-release-unsigned.apk';
 }
 
